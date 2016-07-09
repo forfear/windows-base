@@ -42,11 +42,15 @@
         "floppy/01-install-wget.cmd",
         "floppy/_download.cmd",
         "floppy/_packer_config.cmd",
+        "floppy/uac-disable.bat",
+        "floppy/hotfix-KB2842230.bat",
         "floppy/fixnetwork.ps1",
         "floppy/install-winrm.cmd",
         "floppy/oracle-cert.cer",
+        "floppy/folderoptions.bat",
         "floppy/passwordchange.bat",
         "floppy/powerconfig.bat",
+        "floppy/postunattend.ps1",
         "floppy/win2012r2-standard/Autounattend.xml",
         "floppy/zz-start-sshd.cmd"
       ],
@@ -80,7 +84,7 @@
       ],
       "vm_name": "win2012r2-standard",
       "winrm_password": "vagrant",
-      "winrm_timeout": "60m",
+      "winrm_timeout": "75m",
       "winrm_username": "vagrant"
     },
     {
@@ -92,9 +96,12 @@
         "floppy/_download.cmd",
         "floppy/_packer_config.cmd",
         "floppy/fixnetwork.ps1",
+        "floppy/uac-disable.bat",
         "floppy/install-winrm.cmd",
         "floppy/passwordchange.bat",
+        "floppy/folderoptions.bat",
         "floppy/powerconfig.bat",
+        "floppy/disablewinupdate.bat",
         "floppy/win2012r2-standard/Autounattend.xml",
         "floppy/zz-start-sshd.cmd"
       ],
@@ -125,7 +132,7 @@
         ]
       ],
       "shutdown_command": "{{ user `shutdown_command`}}",
-	  "shutdown_timeout": "15m",
+	   "shutdown_timeout": "15m",
       "type": "parallels-iso",
       "vm_name": "win2012r2-standard",
       "winrm_password": "vagrant",
@@ -150,11 +157,11 @@
         "UPDATE={{user `update`}}"
       ],
       "scripts": [
+        "script/regenerate-dotnet-cache.cmd",
         "script/vagrant.bat",
         "script/cmtool.bat",
         "script/vmtool.bat",
         "script/clean.bat",
-        "script/regenerate-dotnet-cache.cmd",
         "script/uninstall-7zip.bat"
       ],
       "type": "windows-shell"
